@@ -1,0 +1,9 @@
+Сканиране за троянец PHP , PHP Backdoors
+# ТЪрси php файлове със съдържание eval и GLOBALS
+find $PWD -iname \*.php -print0 | xargs -0 grep -E "eval.*GLOBALS"|awk -F ": " '{print $1}' >> trojans.txt
+
+#Търси eval +стрингове над 200 символа
+find $PWD -iname \*.php -print0 | xargs -0 grep -e '[^\ ]\{200,\}'|grep "eval"
+#Търси eval
+find $PWD -iname \*.php -print0 | xargs -0 grep "eval"
+cat impulsko_trojans.txt |grep ".php"|awk -F ".php:" '{print $1.".php"}';
